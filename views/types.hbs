@@ -1,0 +1,71 @@
+<h1>Manage Types</h1>
+
+<h2>Browse Types</h2>
+<table border="1">
+  <tr>
+    <th>type_id</th>
+    <th>type_name</th>
+    <th>description</th>
+    <th>strong_against</th>
+    <th>weak_against</th>
+  </tr>
+  {{#each rows}}
+  <tr>
+    <td>{{this.type_id}}</td>
+    <td>{{this.type_name}}</td>
+    <td>{{this.description}}</td>
+    <td>{{this.strong_against}}</td>
+    <td>{{this.weak_against}}</td>
+  </tr>
+  {{/each}}
+</table>
+
+<hr>
+
+<h2>Add Type</h2>
+<form>
+  <label>type_name:</label>
+  <input type="text" name="type_name" required /><br><br>
+
+  <label>description:</label>
+  <input type="text" name="description" /><br><br>
+
+  <label>strong_against:</label>
+  <input type="text" name="strong_against" /><br><br>
+
+  <label>weak_against:</label>
+  <input type="text" name="weak_against" /><br><br>
+
+  <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Update Type</h2>
+<form>
+  <label>type_id:</label>
+  <input type="number" name="type_id" required /><br><br>
+
+  <label>type_name:</label>
+  <input type="text" name="type_name" /><br><br>
+
+  <label>description:</label>
+  <input type="text" name="description" /><br><br>
+
+  <label>strong_against:</label>
+  <input type="text" name="strong_against" /><br><br>
+
+  <label>weak_against:</label>
+  <input type="text" name="weak_against" /><br><br>
+
+  <button type="submit">Update</button>
+</form>
+
+<hr>
+
+<h2>Delete Type</h2>
+<form>
+  <label>type_id:</label>
+  <input type="number" name="type_id" required />
+  <button type="submit">Delete</button>
+</form>

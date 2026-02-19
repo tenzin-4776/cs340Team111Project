@@ -1,0 +1,50 @@
+<h1>Manage Locations</h1>
+
+<h2>Browse Locations</h2>
+<table border="1">
+  <tr>
+    <th>location_id</th>
+    <th>location_name</th>
+    <th>environment</th>
+    <th>region</th>
+  </tr>
+  {{#each rows}}
+  <tr>
+    <td>{{this.location_id}}</td>
+    <td>{{this.location_name}}</td>
+    <td>{{this.environment}}</td>
+    <td>{{this.region}}</td>
+  </tr>
+  {{/each}}
+</table>
+
+<h2>Add Location</h2>
+<form>
+  <label>location_name:</label>
+  <input type="text" name="location_name" /><br />
+  <label>environment:</label>
+  <input type="text" name="environment" /><br />
+  <label>region:</label>
+  <input type="text" name="region" /><br />
+  <button type="submit">Add</button>
+</form>
+
+<h2>Update Location</h2>
+<form>
+  <label>location_id:</label>
+  <input type="number" name="location_id" /><br />
+  <label>location_name:</label>
+  <input type="text" name="location_name" /><br />
+  <label>environment:</label>
+  <input type="text" name="environment" /><br />
+  <label>region:</label>
+  <input type="text" name="region" /><br />
+  <button type="submit">Update</button>
+</form>
+
+<h2>Delete Location</h2>
+<form>
+  <label>location_id:</label>
+  <input type="number" name="location_id" />
+  <button type="submit">Delete</button>
+</form>

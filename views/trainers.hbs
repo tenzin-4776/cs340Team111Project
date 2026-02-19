@@ -1,0 +1,38 @@
+<h1>Manage Trainers</h1>
+
+<h2>Browse Trainers</h2>
+<table border="1">
+  <tr>
+    <th>trainer_id</th>
+    <th>trainer_name</th>
+  </tr>
+  {{#each rows}}
+  <tr>
+    <td>{{this.trainer_id}}</td>
+    <td>{{this.trainer_name}}</td>
+  </tr>
+  {{/each}}
+</table>
+
+<h2>Add Trainer</h2>
+<form>
+  <label>trainer_name:</label>
+  <input type="text" name="trainer_name" />
+  <button type="submit">Add</button>
+</form>
+
+<h2>Update Trainer</h2>
+<form>
+  <label>trainer_id:</label>
+  <input type="number" name="trainer_id" />
+  <label>trainer_name:</label>
+  <input type="text" name="trainer_name" />
+  <button type="submit">Update</button>
+</form>
+
+<h2>Delete Trainer</h2>
+<form>
+  <label>trainer_id:</label>
+  <input type="number" name="trainer_id" />
+  <button type="submit">Delete</button>
+</form>

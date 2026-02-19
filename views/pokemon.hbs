@@ -1,0 +1,142 @@
+<h1>Manage Pokemon</h1>
+
+<h2>Browse Pokemon</h2>
+<table border="1">
+  <tr>
+    <th>pokemon_id</th>
+    <th>type_id</th>
+    <th>pokemon_name</th>
+    <th>level</th>
+    <th>shiny_status</th>
+    <th>can_evolve</th>
+    <th>evolution_stage</th>
+    <th>category</th>
+  </tr>
+  {{#each rows}}
+  <tr>
+    <td>{{this.pokemon_id}}</td>
+    <td>{{this.type_id}}</td>
+    <td>{{this.pokemon_name}}</td>
+    <td>{{this.level}}</td>
+    <td>{{this.shiny_status}}</td>
+    <td>{{this.can_evolve}}</td>
+    <td>{{this.evolution_stage}}</td>
+    <td>{{this.category}}</td>
+  </tr>
+  {{/each}}
+</table>
+
+<hr>
+
+<h2>Add Pokemon</h2>
+<form>
+
+  <label>type_id:</label>
+  <select name="type_id" required>
+    {{#each types}}
+      <option value="{{this.type_id}}">
+        {{this.type_name}} ({{this.type_id}})
+      </option>
+    {{/each}}
+  </select>
+  <br><br>
+
+  <label>pokemon_name:</label>
+  <input type="text" name="pokemon_name" required />
+  <br><br>
+
+  <label>level:</label>
+  <input type="number" name="level" required />
+  <br><br>
+
+  <label>shiny_status:</label>
+  <select name="shiny_status" required>
+    <option value="0">0 - No</option>
+    <option value="1">1 - Yes</option>
+  </select>
+  <br><br>
+
+  <label>can_evolve:</label>
+  <select name="can_evolve" required>
+    <option value="0">0 - No</option>
+    <option value="1">1 - Yes</option>
+  </select>
+  <br><br>
+
+  <label>evolution_stage:</label>
+  <select name="evolution_stage">
+    <option value="">-- Select Stage --</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+  </select>
+  <br><br>
+
+  <label>category:</label>
+  <input type="text" name="category" />
+  <br><br>
+
+  <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Update Pokemon</h2>
+<form>
+
+  <label>pokemon_id:</label>
+  <input type="number" name="pokemon_id" required />
+  <br><br>
+
+  <label>type_id:</label>
+  <input type="number" name="type_id" />
+  <br><br>
+
+  <label>pokemon_name:</label>
+  <input type="text" name="pokemon_name" />
+  <br><br>
+
+  <label>level:</label>
+  <input type="number" name="level" />
+  <br><br>
+
+  <label>shiny_status:</label>
+  <select name="shiny_status">
+    <option value="">-- Select --</option>
+    <option value="0">0 - No</option>
+    <option value="1">1 - Yes</option>
+  </select>
+  <br><br>
+
+  <label>can_evolve:</label>
+  <select name="can_evolve">
+    <option value="">-- Select --</option>
+    <option value="0">0 - No</option>
+    <option value="1">1 - Yes</option>
+  </select>
+  <br><br>
+
+  <label>evolution_stage:</label>
+  <select name="evolution_stage">
+    <option value="">-- Select Stage --</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+  </select>
+  <br><br>
+
+  <label>category:</label>
+  <input type="text" name="category" />
+  <br><br>
+
+  <button type="submit">Update</button>
+</form>
+
+<hr>
+
+<h2>Delete Pokemon</h2>
+<form>
+  <label>pokemon_id:</label>
+  <input type="number" name="pokemon_id" required />
+  <button type="submit">Delete</button>
+</form>
