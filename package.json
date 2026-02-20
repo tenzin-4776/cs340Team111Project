@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "development": "npx nodemon server.js",
+  "production": "npx forever start server.js",
+  "stop_production": "npx forever stop server.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
