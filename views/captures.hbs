@@ -3,21 +3,19 @@
 <h2>Browse Captures</h2>
 <table border="1">
   <tr>
-    <th>capture_id</th>
-    <th>pokemon_id</th>
-    <th>pokemon_name</th>
-    <th>trainer_id</th>
-    <th>location_id</th>
-    <th>capture_date</th>
-    <th>capture_status</th>
+    <th>Capture ID</th>
+    <th>Pokemon</th>
+    <th>Trainer</th>
+    <th>Location</th>
+    <th>Capture Date</th>
+    <th>Status</th>
   </tr>
   {{#each rows}}
   <tr>
     <td>{{this.capture_id}}</td>
-    <td>{{this.pokemon_id}}</td>
-    <td>{{this.pokemon_name}}</td>
-    <td>{{this.trainer_id}}</td>
-    <td>{{this.location_id}}</td>
+    <td>{{this.pokemon_label}}</td>
+    <td>{{this.trainer_label}}</td>
+    <td>{{this.location_label}}</td>
     <td>{{this.capture_date}}</td>
     <td>{{this.capture_status}}</td>
   </tr>
@@ -28,41 +26,46 @@
 
 <h2>Add Capture</h2>
 <form>
-  <label>pokemon_id:</label>
+  <label>Pokemon:</label>
   <select name="pokemon_id" required>
+    <option value="">-- Select --</option>
     {{#each pokemon}}
       <option value="{{this.pokemon_id}}">
-        {{this.pokemon_name}} ({{this.pokemon_id}})
+        {{this.pokemon_name}} (ID {{this.pokemon_id}})
       </option>
     {{/each}}
-  </select><br><br>
+  </select>
+  <br><br>
 
-  <label>pokemon_name:</label>
-  <input type="text" name="pokemon_name" required /><br><br>
-
-  <label>trainer_id:</label>
+  <label>Trainer:</label>
   <select name="trainer_id" required>
+    <option value="">-- Select --</option>
     {{#each trainers}}
       <option value="{{this.trainer_id}}">
-        {{this.trainer_name}} ({{this.trainer_id}})
+        {{this.trainer_name}} (ID {{this.trainer_id}})
       </option>
     {{/each}}
-  </select><br><br>
+  </select>
+  <br><br>
 
-  <label>location_id:</label>
+  <label>Location:</label>
   <select name="location_id" required>
+    <option value="">-- Select --</option>
     {{#each locations}}
       <option value="{{this.location_id}}">
-        {{this.location_name}} ({{this.location_id}})
+        {{this.location_name}} (ID {{this.location_id}})
       </option>
     {{/each}}
-  </select><br><br>
+  </select>
+  <br><br>
 
-  <label>capture_date:</label>
-  <input type="date" name="capture_date" required /><br><br>
+  <label>Capture Date:</label>
+  <input type="date" name="capture_date" required />
+  <br><br>
 
-  <label>capture_status:</label>
-  <input type="text" name="capture_status" required /><br><br>
+  <label>Status:</label>
+  <input type="text" name="capture_status" required />
+  <br><br>
 
   <button type="submit">Add</button>
 </form>
@@ -71,26 +74,57 @@
 
 <h2>Update Capture</h2>
 <form>
-  <label>capture_id:</label>
-  <input type="number" name="capture_id" required /><br><br>
+  <label>Select Capture:</label>
+  <select name="capture_id" required>
+    <option value="">-- Select --</option>
+    {{#each rows}}
+      <option value="{{this.capture_id}}">
+        Capture {{this.capture_id}} — {{this.pokemon_label}} / {{this.trainer_label}}
+      </option>
+    {{/each}}
+  </select>
+  <br><br>
 
-  <label>pokemon_id:</label>
-  <input type="number" name="pokemon_id" /><br><br>
+  <label>Pokemon:</label>
+  <select name="pokemon_id">
+    <option value="">-- No Change --</option>
+    {{#each pokemon}}
+      <option value="{{this.pokemon_id}}">
+        {{this.pokemon_name}} (ID {{this.pokemon_id}})
+      </option>
+    {{/each}}
+  </select>
+  <br><br>
 
-  <label>pokemon_name:</label>
-  <input type="text" name="pokemon_name" /><br><br>
+  <label>Trainer:</label>
+  <select name="trainer_id">
+    <option value="">-- No Change --</option>
+    {{#each trainers}}
+      <option value="{{this.trainer_id}}">
+        {{this.trainer_name}} (ID {{this.trainer_id}})
+      </option>
+    {{/each}}
+  </select>
+  <br><br>
 
-  <label>trainer_id:</label>
-  <input type="number" name="trainer_id" /><br><br>
+  <label>Location:</label>
+  <select name="location_id">
+    <option value="">-- No Change --</option>
+    {{#each locations}}
+      <option value="{{this.location_id}}">
+        {{this.location_name}} (ID {{this.location_id}})
+      </option>
+    {{/each}}
+  </select>
+  <br><br>
 
-  <label>location_id:</label>
-  <input type="number" name="location_id" /><br><br>
+  <label>Capture Date:</label>
+  <input type="date" name="capture_date" />
+  <br><br>
 
-  <label>capture_date:</label>
-  <input type="date" name="capture_date" /><br><br>
-
-  <label>capture_status:</label>
-  <input type="text" name="capture_status" /><br><br>
+  <label>Status:</label>
+  <input type="text" name="capture_status" />
+  <br><br>
 
   <button type="submit">Update</button>
 </form>
@@ -99,7 +133,15 @@
 
 <h2>Delete Capture</h2>
 <form>
-  <label>capture_id:</label>
-  <input type="number" name="capture_id" required />
+  <label>Select Capture:</label>
+  <select name="capture_id" required>
+    <option value="">-- Select --</option>
+    {{#each rows}}
+      <option value="{{this.capture_id}}">
+        Capture {{this.capture_id}} — {{this.pokemon_label}} / {{this.trainer_label}}
+      </option>
+    {{/each}}
+  </select>
+
   <button type="submit">Delete</button>
 </form>

@@ -3,8 +3,8 @@
 <h2>Browse Trainers</h2>
 <table border="1">
   <tr>
-    <th>trainer_id</th>
-    <th>trainer_name</th>
+    <th>Trainer ID</th>
+    <th>Trainer Name</th>
   </tr>
   {{#each rows}}
   <tr>
@@ -16,23 +16,42 @@
 
 <h2>Add Trainer</h2>
 <form>
-  <label>trainer_name:</label>
+  <label>Trainer Name</label>
   <input type="text" name="trainer_name" />
   <button type="submit">Add</button>
 </form>
 
 <h2>Update Trainer</h2>
 <form>
-  <label>trainer_id:</label>
-  <input type="number" name="trainer_id" />
-  <label>trainer_name:</label>
-  <input type="text" name="trainer_name" />
+  <label>Select Trainer:</label>
+  <select name="trainer_id" required>
+    <option value="">-- Select a Trainer --</option>
+    {{#each rows}}
+      <option value="{{this.trainer_id}}">
+        {{this.trainer_name}} (ID: {{this.trainer_id}})
+      </option>
+    {{/each}}
+  </select>
+
+  <br><br>
+
+  <label>New Trainer Name:</label>
+  <input type="text" name="trainer_name" required />
+
   <button type="submit">Update</button>
 </form>
 
 <h2>Delete Trainer</h2>
 <form>
-  <label>trainer_id:</label>
-  <input type="number" name="trainer_id" />
+  <label>Select Trainer:</label>
+  <select name="trainer_id" required>
+    <option value="">-- Select a Trainer --</option>
+    {{#each rows}}
+      <option value="{{this.trainer_id}}">
+        {{this.trainer_name}} (ID: {{this.trainer_id}})
+      </option>
+    {{/each}}
+  </select>
+
   <button type="submit">Delete</button>
 </form>

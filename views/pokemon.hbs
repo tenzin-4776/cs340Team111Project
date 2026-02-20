@@ -1,21 +1,30 @@
-<h1>Manage Pokemon</h1>
+<h1>Manage Pokémon</h1>
 
-<h2>Browse Pokemon</h2>
+<h2>Browse Pokémon</h2>
 <table border="1">
   <tr>
-    <th>pokemon_id</th>
-    <th>type_id</th>
-    <th>pokemon_name</th>
-    <th>level</th>
-    <th>shiny_status</th>
-    <th>can_evolve</th>
-    <th>evolution_stage</th>
-    <th>category</th>
+    <th>Pokemon ID</th>
+    <th>Type</th>
+    <th>Pokemon Name</th>
+    <th>Level</th>
+    <th>Shiny?</th>
+    <th>Can Evolve?</th>
+    <th>Evolution Stage</th>
+    <th>Category</th>
   </tr>
+
   {{#each rows}}
   <tr>
     <td>{{this.pokemon_id}}</td>
-    <td>{{this.type_id}}</td>
+
+    <td>
+      {{#if this.type_name}}
+        {{this.type_name}}
+      {{else}}
+        {{this.type_id}}
+      {{/if}}
+    </td>
+
     <td>{{this.pokemon_name}}</td>
     <td>{{this.level}}</td>
     <td>{{this.shiny_status}}</td>
@@ -28,51 +37,47 @@
 
 <hr>
 
-<h2>Add Pokemon</h2>
-<form>
-
-  <label>type_id:</label>
+<h2>Add Pokémon</h2>
+<form method="POST" action="/pokemon/add">
+  <label>Type:</label>
   <select name="type_id" required>
     {{#each types}}
-      <option value="{{this.type_id}}">
-        {{this.type_name}} ({{this.type_id}})
-      </option>
+      <option value="{{this.type_id}}">{{this.type_name}}</option>
     {{/each}}
   </select>
   <br><br>
 
-  <label>pokemon_name:</label>
+  <label>Pokemon Name:</label>
   <input type="text" name="pokemon_name" required />
   <br><br>
 
-  <label>level:</label>
-  <input type="number" name="level" required />
+  <label>Level:</label>
+  <input type="number" name="level" min="0" required />
   <br><br>
 
-  <label>shiny_status:</label>
+  <label>Shiny Status:</label>
   <select name="shiny_status" required>
     <option value="0">0 - No</option>
     <option value="1">1 - Yes</option>
   </select>
   <br><br>
 
-  <label>can_evolve:</label>
+  <label>Can Evolve:</label>
   <select name="can_evolve" required>
     <option value="0">0 - No</option>
     <option value="1">1 - Yes</option>
   </select>
   <br><br>
 
-  <label>evolution_stage:</label>
-  <select name="evolution_stage">
-    <option value="">-- Select Stage --</option>
+  <label>Evolution Stage:</label>
+  <select name="evolution_stage" required>
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
   </select>
   <br><br>
 
-  <label>category:</label>
+  <label>Category:</label>
   <input type="text" name="category" />
   <br><br>
 
@@ -81,51 +86,62 @@
 
 <hr>
 
-<h2>Update Pokemon</h2>
-<form>
+<h2>Update Pokémon</h2>
+<form method="POST" action="/pokemon/update">
 
-  <label>pokemon_id:</label>
-  <input type="number" name="pokemon_id" required />
+  <label>Select Pokémon:</label>
+  <select name="pokemon_id" required>
+    {{#each rows}}
+      <option value="{{this.pokemon_id}}">
+        {{this.pokemon_name}} (ID: {{this.pokemon_id}})
+      </option>
+    {{/each}}
+  </select>
   <br><br>
 
-  <label>type_id:</label>
-  <input type="number" name="type_id" />
+  <label>Type:</label>
+  <select name="type_id">
+    <option value="">-- No Change --</option>
+    {{#each types}}
+      <option value="{{this.type_id}}">{{this.type_name}}</option>
+    {{/each}}
+  </select>
   <br><br>
 
-  <label>pokemon_name:</label>
+  <label>Pokemon Name:</label>
   <input type="text" name="pokemon_name" />
   <br><br>
 
-  <label>level:</label>
-  <input type="number" name="level" />
+  <label>Level:</label>
+  <input type="number" name="level" min="0" />
   <br><br>
 
-  <label>shiny_status:</label>
+  <label>Shiny Status:</label>
   <select name="shiny_status">
-    <option value="">-- Select --</option>
+    <option value="">-- No Change --</option>
     <option value="0">0 - No</option>
     <option value="1">1 - Yes</option>
   </select>
   <br><br>
 
-  <label>can_evolve:</label>
+  <label>Can Evolve:</label>
   <select name="can_evolve">
-    <option value="">-- Select --</option>
+    <option value="">-- No Change --</option>
     <option value="0">0 - No</option>
     <option value="1">1 - Yes</option>
   </select>
   <br><br>
 
-  <label>evolution_stage:</label>
+  <label>Evolution Stage:</label>
   <select name="evolution_stage">
-    <option value="">-- Select Stage --</option>
+    <option value="">-- No Change --</option>
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
   </select>
   <br><br>
 
-  <label>category:</label>
+  <label>Category:</label>
   <input type="text" name="category" />
   <br><br>
 
@@ -134,9 +150,15 @@
 
 <hr>
 
-<h2>Delete Pokemon</h2>
-<form>
-  <label>pokemon_id:</label>
-  <input type="number" name="pokemon_id" required />
+<h2>Delete Pokémon</h2>
+<form method="POST" action="/pokemon/delete">
+  <label>Select Pokémon:</label>
+  <select name="pokemon_id" required>
+    {{#each rows}}
+      <option value="{{this.pokemon_id}}">
+        {{this.pokemon_name}} (ID: {{this.pokemon_id}})
+      </option>
+    {{/each}}
+  </select>
   <button type="submit">Delete</button>
 </form>

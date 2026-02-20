@@ -3,10 +3,10 @@
 <h2>Browse Locations</h2>
 <table border="1">
   <tr>
-    <th>location_id</th>
-    <th>location_name</th>
-    <th>environment</th>
-    <th>region</th>
+    <th>Location ID</th>
+    <th>Location Name</th>
+    <th>Environment</th>
+    <th>Region</th>
   </tr>
   {{#each rows}}
   <tr>
@@ -18,33 +18,62 @@
   {{/each}}
 </table>
 
+<hr>
+
 <h2>Add Location</h2>
 <form>
-  <label>location_name:</label>
-  <input type="text" name="location_name" /><br />
-  <label>environment:</label>
-  <input type="text" name="environment" /><br />
-  <label>region:</label>
-  <input type="text" name="region" /><br />
+  <label>Location Name:</label>
+  <input type="text" name="location_name" required /><br /><br>
+
+  <label>Environment:</label>
+  <input type="text" name="environment" required /><br /><br>
+
+  <label>Region:</label>
+  <input type="text" name="region" required /><br /><br>
+
   <button type="submit">Add</button>
 </form>
 
+<hr>
+
 <h2>Update Location</h2>
 <form>
-  <label>location_id:</label>
-  <input type="number" name="location_id" /><br />
-  <label>location_name:</label>
-  <input type="text" name="location_name" /><br />
-  <label>environment:</label>
-  <input type="text" name="environment" /><br />
-  <label>region:</label>
-  <input type="text" name="region" /><br />
+  <label>Select Location:</label>
+  <select name="location_id" required>
+    <option value="">-- Select --</option>
+    {{#each rows}}
+      <option value="{{this.location_id}}">
+        {{this.location_name}} (ID: {{this.location_id}})
+      </option>
+    {{/each}}
+  </select>
+  <br><br>
+
+  <label>Location Name:</label>
+  <input type="text" name="location_name" /><br /><br>
+
+  <label>Environment:</label>
+  <input type="text" name="environment" /><br /><br>
+
+  <label>Region:</label>
+  <input type="text" name="region" /><br /><br>
+
   <button type="submit">Update</button>
 </form>
 
+<hr>
+
 <h2>Delete Location</h2>
 <form>
-  <label>location_id:</label>
-  <input type="number" name="location_id" />
+  <label>Select Location:</label>
+  <select name="location_id" required>
+    <option value="">-- Select --</option>
+    {{#each rows}}
+      <option value="{{this.location_id}}">
+        {{this.location_name}} (ID: {{this.location_id}})
+      </option>
+    {{/each}}
+  </select>
+
   <button type="submit">Delete</button>
 </form>
