@@ -1,14 +1,14 @@
 -- Data manipulation queries for Bill's PC Pokemon Database
-
+-- Matches ddl.sql table/column names:
+-- Types, Pokemon, Trainers, Locations, Captures
 
 -- --------------------------------------------------------------
 -- Types Page
 -- --------------------------------------------------------------
 
-
 -- Display all types
 SELECT type_id, type_name, description, strong_against, weak_against
-FROM types
+FROM Types
 ORDER BY type_name;
 
 -- Add a type
@@ -32,11 +32,20 @@ WHERE type_id = @type_idFromForm;
 -- Pokemon Page
 -- --------------------------------------------------------------
 
-
--- Display all Pokemon
-SELECT pokemon_id, type_id, pokemon_name, level, shiny_status, can_evolve, evolution_stage, category
-FROM Pokemon
-ORDER BY pokemon_id;
+-- Display all Pokemon (UI-friendly: show type_name via JOIN)
+SELECT
+  p.pokemon_id,
+  p.pokemon_name,
+  p.type_id,
+  t.type_name AS type_name,
+  p.level,
+  p.shiny_status,
+  p.can_evolve,
+  p.evolution_stage,
+  p.category
+FROM Pokemon p
+JOIN Types t ON p.type_id = t.type_id
+ORDER BY p.pokemon_id;
 
 -- Dropdown menu for Pokemon.type_id
 SELECT type_id, type_name
@@ -67,7 +76,6 @@ WHERE pokemon_id = @pokemon_idFromForm;
 -- Trainers Page
 -- --------------------------------------------------------------
 
-
 -- Display all trainers
 SELECT trainer_id, trainer_name
 FROM Trainers
@@ -90,7 +98,6 @@ WHERE trainer_id = @trainer_idFromForm;
 -- --------------------------------------------------------------
 -- Locations Page
 -- --------------------------------------------------------------
-
 
 -- Display all locations
 SELECT location_id, location_name, environment, region
@@ -117,23 +124,25 @@ WHERE location_id = @location_idFromForm;
 -- Captures Page
 -- --------------------------------------------------------------
 
-
--- Display all captures
-SELECT Captures.capture_id,
-       Captures.pokemon_id,
-       Pokemon.pokemon_name,
-       Captures.trainer_id,
-       Trainers.trainer_name,
-       Captures.location_id,
-       Locations.location_name,
-       Locations.region,
-       Captures.capture_date,
-       Captures.capture_status
-FROM Captures
-JOIN Pokemon ON Captures.pokemon_id = Pokemon.pokemon_id
-JOIN Trainers ON Captures.trainer_id = Trainers.trainer_id
-JOIN Locations ON Captures.location_id = Locations.location_id
-ORDER BY Captures.capture_id;
+-- Display all captures (joined for readability)
+SELECT
+  c.capture_id,
+  c.pokemon_id,
+  p.pokemon_name,
+  t.type_name AS pokemon_type,
+  c.trainer_id,
+  tr.trainer_name,
+  c.location_id,
+  l.location_name,
+  l.region,
+  c.capture_date,
+  c.capture_status
+FROM Captures c
+JOIN Pokemon p   ON c.pokemon_id = p.pokemon_id
+JOIN Types t     ON p.type_id = t.type_id
+JOIN Trainers tr ON c.trainer_id = tr.trainer_id
+JOIN Locations l ON c.location_id = l.location_id
+ORDER BY c.capture_id;
 
 -- Dropdowns for Add/Update Capture
 SELECT pokemon_id, pokemon_name FROM Pokemon ORDER BY pokemon_name;
