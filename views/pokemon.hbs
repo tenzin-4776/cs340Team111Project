@@ -151,14 +151,16 @@
 <hr>
 
 <h2>Delete Pokémon</h2>
+
 <form method="POST" action="/pokemon/delete">
-  <label>Select Pokémon:</label>
-  <select name="pokemon_id" required>
+  <label for="pokemon_id">Select Pokémon:</label>
+  <select name="pokemon_id" id="pokemon_id" required>
     {{#each rows}}
       <option value="{{this.pokemon_id}}">
         {{this.pokemon_name}} (ID: {{this.pokemon_id}})
       </option>
     {{/each}}
   </select>
+
   <button type="submit">Delete</button>
 </form>

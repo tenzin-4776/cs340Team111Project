@@ -1,3 +1,10 @@
+DROP PROCEDURE IF EXISTS sp_reset;
+DELIMITER //
+
+CREATE PROCEDURE sp_reset()
+BEGIN
+
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS Captures;
@@ -153,3 +160,6 @@ INSERT INTO Captures (pokemon_id, trainer_id, location_id, capture_date, capture
     '2026-02-04',
     'Captured'
   );
+END//
+
+DELIMITER ;

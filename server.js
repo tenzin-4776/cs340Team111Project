@@ -8,6 +8,7 @@ const db = require("./database/db-connector");
 const app = express();
 const PORT = 9111;
 
+console.log("🔥 SERVER FILE LOADED FROM:", __dirname);
 
 // View Engine Setup
 app.engine(".hbs", engine({ extname: ".hbs" }));
@@ -84,6 +85,29 @@ app.get("/captures", async (req, res) => {
     trainers,
     locations
   });
+});
+
+// Reset Database
+app.get('/reset', async (req, res) => {
+  try {
+    await db.query('CALL sp_reset();');
+    res.redirect('/');
+  } catch (err) {
+    console.error('RESET ERROR:', err);
+    res.status(500).send('Reset failed. Check server logs.');
+  }
+});
+
+// DELETE POKEMON (Demo CUD)
+app.post("/pokemon/delete", async (req, res) => {
+  try {
+    const pokemonID = req.body.pokemon_id; // must match the <select name="pokemon_id">
+    await db.query("DELETE FROM Pokemon WHERE pokemon_id = ?;", [pokemonID]);
+    res.redirect("/pokemon");
+  } catch (err) {
+    console.error("Error deleting pokemon:", err);
+    res.status(500).send("Delete failed");
+  }
 });
 
 // Start Server
