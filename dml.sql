@@ -1,5 +1,4 @@
 -- Data manipulation queries for Bill's PC Pokemon Database
--- Matches ddl.sql table/column names:
 -- Types, Pokemon, Trainers, Locations, Captures
 
 -- --------------------------------------------------------------
@@ -32,7 +31,7 @@ WHERE type_id = @type_idFromForm;
 -- Pokemon Page
 -- --------------------------------------------------------------
 
--- Display all Pokemon (UI-friendly: show type_name via JOIN)
+-- Display all Pokemon 
 SELECT
   p.pokemon_id,
   p.pokemon_name,

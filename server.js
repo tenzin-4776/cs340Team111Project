@@ -101,8 +101,9 @@ app.get('/reset', async (req, res) => {
 // DELETE POKEMON (Demo CUD)
 app.post("/pokemon/delete", async (req, res) => {
   try {
-    const pokemonID = req.body.pokemon_id; // must match the <select name="pokemon_id">
-    await db.query("DELETE FROM Pokemon WHERE pokemon_id = ?;", [pokemonID]);
+    const pokemonID = req.body.pokemon_id;
+    await db.query("CALL sp_delete_pokemon(?);", [pokemonID]);
+    
     res.redirect("/pokemon");
   } catch (err) {
     console.error("Error deleting pokemon:", err);
