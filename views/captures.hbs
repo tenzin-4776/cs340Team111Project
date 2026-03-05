@@ -13,9 +13,9 @@
   {{#each rows}}
   <tr>
     <td>{{this.capture_id}}</td>
-    <td>{{this.pokemon_label}}</td>
-    <td>{{this.trainer_label}}</td>
-    <td>{{this.location_label}}</td>
+    <td>{{this.pokemon_name}}</td>
+    <td>{{this.trainer_name}}</td>
+    <td>{{this.location_name}}</td>
     <td>{{this.capture_date}}</td>
     <td>{{this.capture_status}}</td>
   </tr>
@@ -25,13 +25,13 @@
 <hr>
 
 <h2>Add Capture</h2>
-<form>
+<form method="POST" action="/captures/add">
   <label>Pokemon:</label>
   <select name="pokemon_id" required>
     <option value="">-- Select --</option>
     {{#each pokemon}}
       <option value="{{this.pokemon_id}}">
-        {{this.pokemon_name}} (ID {{this.pokemon_id}})
+        {{this.pokemon_name}} (ID: {{this.pokemon_id}})
       </option>
     {{/each}}
   </select>
@@ -42,7 +42,7 @@
     <option value="">-- Select --</option>
     {{#each trainers}}
       <option value="{{this.trainer_id}}">
-        {{this.trainer_name}} (ID {{this.trainer_id}})
+        {{this.trainer_name}} (ID: {{this.trainer_id}})
       </option>
     {{/each}}
   </select>
@@ -53,7 +53,7 @@
     <option value="">-- Select --</option>
     {{#each locations}}
       <option value="{{this.location_id}}">
-        {{this.location_name}} (ID {{this.location_id}})
+        {{this.location_name}} (ID: {{this.location_id}})
       </option>
     {{/each}}
   </select>
@@ -73,13 +73,13 @@
 <hr>
 
 <h2>Update Capture</h2>
-<form>
+<form method="POST" action="/captures/update">
   <label>Select Capture:</label>
   <select name="capture_id" required>
     <option value="">-- Select --</option>
     {{#each rows}}
       <option value="{{this.capture_id}}">
-        Capture {{this.capture_id}} — {{this.pokemon_label}} / {{this.trainer_label}}
+        Capture {{this.capture_id}}: {{this.pokemon_name}}, {{this.trainer_name}}
       </option>
     {{/each}}
   </select>
@@ -90,7 +90,7 @@
     <option value="">-- No Change --</option>
     {{#each pokemon}}
       <option value="{{this.pokemon_id}}">
-        {{this.pokemon_name}} (ID {{this.pokemon_id}})
+        {{this.pokemon_name}} (ID: {{this.pokemon_id}})
       </option>
     {{/each}}
   </select>
@@ -101,7 +101,7 @@
     <option value="">-- No Change --</option>
     {{#each trainers}}
       <option value="{{this.trainer_id}}">
-        {{this.trainer_name}} (ID {{this.trainer_id}})
+        {{this.trainer_name}} (ID :{{this.trainer_id}})
       </option>
     {{/each}}
   </select>
@@ -112,7 +112,7 @@
     <option value="">-- No Change --</option>
     {{#each locations}}
       <option value="{{this.location_id}}">
-        {{this.location_name}} (ID {{this.location_id}})
+        {{this.location_name}} (ID: {{this.location_id}})
       </option>
     {{/each}}
   </select>
@@ -132,7 +132,7 @@
 <hr>
 
 <h2>Delete Capture</h2>
-<form>
+<form method="POST" action="/captures/delete">
   <label>Select Capture:</label>
   <select name="capture_id" required>
     <option value="">-- Select --</option>

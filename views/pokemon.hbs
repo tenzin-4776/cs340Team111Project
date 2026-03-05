@@ -87,6 +87,7 @@
 <hr>
 
 <h2>Update Pokémon</h2>
+<p>All fields are required for update</p>
 <form method="POST" action="/pokemon/update">
 
   <label>Select Pokémon:</label>
@@ -100,8 +101,7 @@
   <br><br>
 
   <label>Type:</label>
-  <select name="type_id">
-    <option value="">-- No Change --</option>
+  <select name="type_id" required>
     {{#each types}}
       <option value="{{this.type_id}}">{{this.type_name}}</option>
     {{/each}}
@@ -109,32 +109,29 @@
   <br><br>
 
   <label>Pokemon Name:</label>
-  <input type="text" name="pokemon_name" />
+  <input type="text" name="pokemon_name" required />
   <br><br>
 
   <label>Level:</label>
-  <input type="number" name="level" min="0" />
+  <input type="number" name="level" min="0" required />
   <br><br>
 
   <label>Shiny Status:</label>
-  <select name="shiny_status">
-    <option value="">-- No Change --</option>
+  <select name="shiny_status" required>
     <option value="0">0 - No</option>
     <option value="1">1 - Yes</option>
   </select>
   <br><br>
 
   <label>Can Evolve:</label>
-  <select name="can_evolve">
-    <option value="">-- No Change --</option>
+  <select name="can_evolve" required>
     <option value="0">0 - No</option>
     <option value="1">1 - Yes</option>
   </select>
   <br><br>
 
   <label>Evolution Stage:</label>
-  <select name="evolution_stage">
-    <option value="">-- No Change --</option>
+  <select name="evolution_stage" required>
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -142,7 +139,7 @@
   <br><br>
 
   <label>Category:</label>
-  <input type="text" name="category" />
+  <input type="text" name="category" required />
   <br><br>
 
   <button type="submit">Update</button>

@@ -24,17 +24,17 @@
 <hr>
 
 <h2>Add Type</h2>
-<form>
+<form method="POST" action="/types/add">
   <label>Type Name:</label>
   <input type="text" name="type_name" required />
   <br><br>
 
   <label>Description:</label>
-  <input type="text" name="description" />
+  <input type="text" name="description" required/>
   <br><br>
 
   <label>Strong Against:</label>
-  <input type="text" name="strong_against" />
+  <input type="text" name="strong_against" required/>
   <br><br>
 
   <label>Weak Against:</label>
@@ -47,7 +47,7 @@
 <hr>
 
 <h2>Update Type</h2>
-<form>
+<form method="POST" action="/types/update">
 
   <label>Select Type:</label>
   <select name="type_id" required>
@@ -60,19 +60,19 @@
   <br><br>
 
   <label>Type Name:</label>
-  <input type="text" name="type_name" />
+  <input type="text" name="type_name" required/>
   <br><br>
 
   <label>Description:</label>
-  <input type="text" name="description" />
+  <input type="text" name="description" required/>
   <br><br>
 
   <label>Strong Against:</label>
-  <input type="text" name="strong_against" />
+  <input type="text" name="strong_against" required/>
   <br><br>
 
   <label>Weak Against:</label>
-  <input type="text" name="weak_against" />
+  <input type="text" name="weak_against" required/>
   <br><br>
 
   <button type="submit">Update Type</button>
@@ -81,7 +81,7 @@
 <hr>
 
 <h2>Delete Type</h2>
-<form>
+<form method="POST" action="/types/delete">
 
   <label>Select Type:</label>
   <select name="type_id" required>

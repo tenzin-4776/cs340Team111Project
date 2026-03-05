@@ -21,7 +21,7 @@
 <hr>
 
 <h2>Add Location</h2>
-<form>
+<form method="post" action="/locations/add">
   <label>Location Name:</label>
   <input type="text" name="location_name" required /><br /><br>
 
@@ -37,7 +37,7 @@
 <hr>
 
 <h2>Update Location</h2>
-<form>
+<form method="post" action="/locations/update">
   <label>Select Location:</label>
   <select name="location_id" required>
     <option value="">-- Select --</option>
@@ -64,7 +64,7 @@
 <hr>
 
 <h2>Delete Location</h2>
-<form>
+<form method="post" action="/locations/delete">
   <label>Select Location:</label>
   <select name="location_id" required>
     <option value="">-- Select --</option>
