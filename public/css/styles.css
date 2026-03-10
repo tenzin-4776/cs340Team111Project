@@ -1,0 +1,127 @@
+:root {
+  --bg-dark: #2f3238;
+  --pokedex-red: #ef1b1b;
+  --panel-light: #f2f2f2;
+  --tab-gray: #c9c9c9;
+  --border-dark: #111111;
+  --text-dark: #111111;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: var(--bg-dark);
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--pokedex-red);
+  border: 3px solid var(--border-dark);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
+  background: var(--tab-gray);
+  border: 3px solid var(--border-dark);
+  border-radius: 12px 12px 0 0;
+  padding: 8px 18px;
+  box-shadow: 0 2px 0 #111;
+}
+
+nav a:hover {
+  background: #dddddd;
+}
+
+.content-panel {
+  background: white;
+  border: 3px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+}
+
+.content-panel h1,
+.content-panel h2,
+.content-panel p,
+.content-panel li,
+.content-panel label,
+.content-panel a {
+  color: #111;
+}
+
+hr {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 3px solid var(--border-dark);
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  border: 2px solid var(--border-dark);
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #d9d9d9;
+}
+
+form {
+  background: white;
+  border: 3px solid var(--border-dark);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+input,
+select,
+button {
+  border: 3px solid var(--border-dark);
+  padding: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+button {
+  background: #e6e6e6;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d2d2d2;
+}
+
+.home-art {
+  width: 140px;
+  position: absolute;
+  right: 40px;
+  top: 60px;
+
+  border: 3px solid var(--border-dark);
+  border-radius: 50%;
+  background: white;
+  padding: 6px;
+
+  box-shadow: 0 3px 0 var(--border-dark);
+}
