@@ -51,6 +51,8 @@
 
   <label>Select Type:</label>
   <select name="type_id" required>
+    <option value="">-- Select Type</option>
+
     {{#each rows}}
       <option value="{{this.type_id}}">
         {{this.type_name}} (ID: {{this.type_id}})
@@ -85,6 +87,8 @@
 
   <label>Select Type:</label>
   <select name="type_id" required>
+    <option value="">-- Select Type</option>
+    
     {{#each rows}}
       <option value="{{this.type_id}}">
         {{this.type_name}} (ID: {{this.type_id}})

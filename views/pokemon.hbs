@@ -41,6 +41,8 @@
 <form method="POST" action="/pokemon/add">
   <label>Type:</label>
   <select name="type_id" required>
+    <option value="">-- Select Type --</option>
+
     {{#each types}}
       <option value="{{this.type_id}}">{{this.type_name}}</option>
     {{/each}}
@@ -92,6 +94,8 @@
 
   <label>Select Pokémon:</label>
   <select name="pokemon_id" required>
+    <option value="">-- Select Pokémon --</option>
+
     {{#each rows}}
       <option value="{{this.pokemon_id}}">
         {{this.pokemon_name}} (ID: {{this.pokemon_id}})
@@ -102,6 +106,9 @@
 
   <label>Type:</label>
   <select name="type_id" required>
+    <option value="">-- Select Type --</option>
+
+    
     {{#each types}}
       <option value="{{this.type_id}}">{{this.type_name}}</option>
     {{/each}}
@@ -152,6 +159,8 @@
 <form method="POST" action="/pokemon/delete">
   <label for="pokemon_id">Select Pokémon:</label>
   <select name="pokemon_id" id="pokemon_id" required>
+    <option value="">-- Select Pokémon --</option>
+
     {{#each rows}}
       <option value="{{this.pokemon_id}}">
         {{this.pokemon_name}} (ID: {{this.pokemon_id}})
