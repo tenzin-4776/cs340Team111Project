@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "pokemon";
+  src: url("/fonts/pokemon.ttf") format("truetype");
+}
+
 :root {
-  --bg-dark: #2f3238;
+ --bg-dark: #212327;
   --pokedex-red: #ef1b1b;
   --panel-light: #f2f2f2;
   --tab-gray: #c9c9c9;
@@ -8,10 +13,22 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "pokemon";
   margin: 0;
   padding: 20px;
   background: var(--bg-dark);
+}
+
+input,
+select,
+button {
+  border: 3px solid var(--border-dark);
+  font-family: "pokemon";
+  padding: 8px;
+  font-size: 14px;
+  background: white;
+  line-height: 1.4;
+  box-sizing: border-box;
 }
 
 .app-shell {
@@ -27,7 +44,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 nav a {
@@ -40,6 +57,7 @@ nav a {
   border-radius: 12px 12px 0 0;
   padding: 8px 18px;
   box-shadow: 0 2px 0 #111;
+  margin-bottom: -20px;
 }
 
 nav a:hover {
@@ -87,7 +105,7 @@ th {
 }
 
 form {
-  background: white;
+  background: rgb(243, 243, 243);
   border: 3px solid var(--border-dark);
   padding: 16px;
   margin-bottom: 20px;
@@ -116,7 +134,7 @@ button:hover {
   width: 140px;
   position: absolute;
   right: 40px;
-  top: 60px;
+  top: 160px;
 
   border: 3px solid var(--border-dark);
   border-radius: 50%;
