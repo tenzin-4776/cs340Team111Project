@@ -27,8 +27,20 @@
 
     <td>{{this.pokemon_name}}</td>
     <td>{{this.level}}</td>
-    <td>{{this.shiny_status}}</td>
-    <td>{{this.can_evolve}}</td>
+    <td>
+      {{#if this.shiny_status}}
+        Yes
+      {{else}}
+        No
+      {{/if}}
+    </td>
+    <td>
+      {{#if this.can_evolve}}
+        Yes
+      {{else}}
+        No
+      {{/if}}
+    </td>
     <td>{{this.evolution_stage}}</td>
     <td>{{this.category}}</td>
   </tr>
