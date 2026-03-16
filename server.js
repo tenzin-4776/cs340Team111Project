@@ -68,7 +68,13 @@ app.post("/types/delete", async (req, res) => {
     res.redirect("/types");
   } catch (err) {
     console.error("Error deleting type:", err);
-    res.status(500).send("Delete failed because the type is still referenced by a pokemon. Please delete the pokemon first.");
+
+    const [rows] = await db.query("SELECT * FROM Types;");
+
+    res.status(200).render("types", {
+      rows,
+      deleteError: "Invalid operation: this type is still referenced by a Pokémon. Please delete or reassign the Pokémon first."
+    });
   }
 });
 

@@ -87,7 +87,7 @@
 
   <label>Select Type:</label>
   <select name="type_id" required>
-    <option value="">-- Select Type</option>
+    <option value="">-- Select Type --</option>
     
     {{#each rows}}
       <option value="{{this.type_id}}">
@@ -98,3 +98,9 @@
 
   <button type="submit">Delete Type</button>
 </form>
+
+{{#if deleteError}}
+  <p style="color:red; font-weight:bold;">
+    {{deleteError}}
+  </p>
+{{/if}}

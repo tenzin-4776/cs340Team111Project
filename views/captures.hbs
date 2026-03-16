@@ -87,7 +87,7 @@
 
   <label>Pokemon:</label>
   <select name="pokemon_id">
-    <option value="">-- No Change --</option>
+    <option value="">-- Select --</option>
     {{#each pokemon}}
       <option value="{{this.pokemon_id}}">
         {{this.pokemon_name}} (ID: {{this.pokemon_id}})
@@ -98,7 +98,7 @@
 
   <label>Trainer:</label>
   <select name="trainer_id">
-    <option value="">-- No Change --</option>
+    <option value="">-- Select --</option>
     {{#each trainers}}
       <option value="{{this.trainer_id}}">
         {{this.trainer_name}} (ID :{{this.trainer_id}})
@@ -109,7 +109,7 @@
 
   <label>Location:</label>
   <select name="location_id">
-    <option value="">-- No Change --</option>
+    <option value="">-- Select --</option>
     {{#each locations}}
       <option value="{{this.location_id}}">
         {{this.location_name}} (ID: {{this.location_id}})
